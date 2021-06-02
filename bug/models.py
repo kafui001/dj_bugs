@@ -46,7 +46,7 @@ class Task(models.Model):
     project          = models.CharField(max_length=255)
     
 
-class Priority(models.Model):
+class TaskPriority(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
@@ -56,7 +56,7 @@ class Priority(models.Model):
         return reverse('home')
 
 
-class Status(models.Model):
+class TaskStatus(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):

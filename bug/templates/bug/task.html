@@ -3071,14 +3071,19 @@
         <div class="modal-dialog modal-dialog-centered modal-md modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title  fw-bold" id="createprojectlLabel"> Create Project</h5>
+                    <h5 class="modal-title  fw-bold" id="createprojectlLabel"> Create Task</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <form method="POST" action=''>
+                        {% csrf_token %}
+                        
+                    
                     <div class="mb-3">
-                        <label for="exampleFormControlInput77" class="form-label">Project Name</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput77"
-                            placeholder="Explain what the Project Name">
+                        <label for="exampleFormControlInput77" class="form-label">Task Name</label>
+                        <!-- <input type="text" class="form-control" id="exampleFormControlInput77"
+                            placeholder="Explain what the Project Name"> -->
+                        {{ form.title }}
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Project Category</label>
@@ -3096,10 +3101,10 @@
                             <option value="10">Other</option>
                         </select>
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="formFileMultipleone" class="form-label">Project Images & Document</label>
                         <input class="form-control" type="file" id="formFileMultipleone" multiple>
-                    </div>
+                    </div> -->
                     <div class="deadline-form">
                         <form>
                             <div class="row g-3 mb-3">
@@ -3153,14 +3158,17 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea78" class="form-label">Description (optional)</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea78" rows="3"
-                            placeholder="Add any extra details about the request"></textarea>
+                        <!-- <textarea class="form-control" id="exampleFormControlTextarea78" rows="3"
+                            placeholder="Add any extra details about the request"></textarea> -->
+                        {{ form.description }}
+                    </div>
+                
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Done</button>
+                        <button type="button" class="btn btn-primary">Create</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Done</button>
-                    <button type="button" class="btn btn-primary">Create</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -3199,7 +3207,10 @@
                         <input class="form-control" type="file" id="formFileMultiple456">
                     </div>
                     <div class="deadline-form">
-                        <form>
+
+                        <form method="POST" action=''>
+                            {% csrf_token %}
+                            
                             <div class="row g-3 mb-3">
                                 <div class="col">
                                     <label for="datepickerded123" class="form-label">Project Start Date</label>
