@@ -23,7 +23,7 @@ from users import views as user_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/', user_views.UserSignUpView.as_view(), name='signup'),
-    path('login/', user_views.UserLogin.as_view(), name='login'),
+    path('', user_views.UserLogin.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
-    path('',include('bug.urls', namespace='bug')),
+    path('task/',include('bug.urls', namespace='bug')),
 ]

@@ -6,5 +6,5 @@ app_name = 'bug'
 
 urlpatterns = [
     # path('', home, name='home'),
-    path('task/', TaskView.as_view(), name='task'),
+    path('', TaskView.as_view(), name='task'),
 ]

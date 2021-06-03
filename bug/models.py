@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 class BugUser(AbstractUser):
     is_developer       = models.BooleanField(default=False)
-    is_project_manager = models.BooleanField(default=True)
+    is_project_manager = models.BooleanField(default=False)
 
  
 class UserProfile(models.Model):
@@ -36,14 +36,14 @@ class Developer(models.Model):
 class Task(models.Model):
     title              = models.CharField(max_length=255)
     description        = models.TextField()
-    creator            = models.ForeignKey(ProjectManager,on_delete=models.SET_NULL, null=True,related_name='task_author')
+    creator            = models.ForeignKey(BugUser,on_delete=models.SET_NULL, null=True,related_name='task_author')
     developer_assigned = models.ForeignKey(Developer,on_delete=models.SET_NULL, null=True,blank=True,related_name='task_developer')
     date_created       = models.DateField(auto_now_add=True)
     date_assigned      = models.DateField(auto_now_add=True)
     date_completed     = models.DateField(auto_now_add=True)
-    status           = models.CharField(max_length=255)
-    priority         = models.CharField(max_length=255)
-    project          = models.CharField(max_length=255)
+    status             = models.CharField(max_length=255)
+    priority           = models.CharField(max_length=255)
+    project            = models.CharField(max_length=255)
     
 
 class TaskPriority(models.Model):

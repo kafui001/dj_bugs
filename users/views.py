@@ -26,7 +26,7 @@ class UserSignUpView(View):
             user.username = form.cleaned_data["username"]
             user.save()
             login(request, user)
-            return redirect('bug_app:home')
+            return redirect('bug:task')
         else:
             return render(request, "users/signup.html", {
                 'form': form
@@ -36,7 +36,7 @@ class UserSignUpView(View):
 class UserLogin(FormView):
     template_name = "users/login.html"
     form_class = AuthenticationForm
-    success_url = "bug_app:home"
+    success_url = reverse_lazy("bug:task")
 
     def post(self, request, *args, **kwargs):
         form = self.get_form()
