@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http.response import HttpResponseRedirect
+from django.views.generic.list import MultipleObjectMixin
 from django.views.generic import CreateView, FormView
 from django.urls import reverse_lazy
 
@@ -13,19 +13,24 @@ def home(request):
     return render(request, 'bug/task.html',context)
 
 
+# class TaskView(MultipleObjectMixin,FormView):
 class TaskView(FormView):
     model = Task
     template_name = 'bug/task.html'
     form_class = TaskForm
     success_url = reverse_lazy('bug:task')
-    queryset = Task.objects.all()
+    # MultipleObjectMixin 
+    # context_object_name = 'tasks'
+    # paginate_by = 10
+    # queryset = Task.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super(TaskView, self).get_context_data(**kwargs)
-        # context['unassigned'] =
-        # context['in_progress'] =
-        # context['needs_review'] =
-        # context['completed'] =
+        context['tasks'] = Task.objects.all()
+        context['unassigned'] = Task.objects.filter(status='open')
+        context['in_progress'] = Task.objects.filter(status='in progress')
+        context['needs_review'] = Task.objects.filter(status='needs review')
+        context['completed'] = Task.objects.filter(status='completed')
         return context
 
     # limit task creation to only admin and project manager
