@@ -6,7 +6,7 @@ from django.views import View
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 
-from .forms import UserSignUpForm
+from .forms import UserSignUpForm, LoginForm
 
 
 class UserSignUpView(View):
@@ -34,8 +34,8 @@ class UserSignUpView(View):
 
 
 class UserLogin(FormView):
-    template_name = "users/login.html"
-    form_class = AuthenticationForm
+    template_name = "users/signin.html"
+    form_class = LoginForm
     success_url = reverse_lazy("bug:task")
 
     def post(self, request, *args, **kwargs):
