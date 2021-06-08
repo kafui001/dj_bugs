@@ -26,4 +26,5 @@ urlpatterns = [
     path('', user_views.UserLogin.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('task/',include('bug.urls', namespace='bug')),
+    path('ticket/',include('ticket.urls', namespace='ticket')),
 ]

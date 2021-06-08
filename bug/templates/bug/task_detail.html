@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
 
@@ -8,7 +9,7 @@
     <title>:: My-Task:: Tickets Detail</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
     <!-- project css file  -->
-    <link rel="stylesheet" href="assets/css/my-task.style.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/my-task.style.min.css' %}">
 </head>
 <body>
 
@@ -649,11 +650,11 @@
 </div>
  
 <!-- Jquery Core Js -->
-<script src="assets/bundles/libscripts.bundle.js"></script>
+<script src="{% static 'assets/bundles/libscripts.bundle.js' %}"></script>
 
 
 <!-- Jquery Page Js -->
-<script src="../js/template.js"></script>
+<script src="{% static 'js/template.js' %}"></script>
 
 </body>
 </html>

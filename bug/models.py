@@ -70,13 +70,13 @@ class TaskStatus(models.Model):
 #     pass
 
 
-# class Ticket(models.Model):
-#     pass
-    # title = models.CharField(max_length=150)
-    # description = models.TextField()
-    # priority = 
-    # status = 
-    # project = 
-    # date_created = 
-    # date_resolved = 
-    # assigned_to = 
+class Ticket(models.Model):
+    title              = models.CharField(max_length=150)
+    description        = models.TextField()
+    creator            = models.ForeignKey(BugUser,on_delete=models.SET_NULL, null=True,related_name='ticket_author')
+    assigned_to        = models.ForeignKey(Developer,on_delete=models.SET_NULL, null=True,blank=True,related_name='ticket_developer')
+    priority           = models.CharField(max_length=50)
+    status             = models.CharField(max_length=50)
+    # project            = models.CharField(max_length=50)
+    date_created       = models.DateField(auto_now_add=True)
+    date_resolved      = models.DateField(auto_now_add=True)

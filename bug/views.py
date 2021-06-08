@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.list import MultipleObjectMixin
-from django.views.generic import CreateView, FormView
+from django.views.generic import CreateView, FormView, DetailView
 from django.urls import reverse_lazy
 
 from .models import Task
@@ -45,3 +45,9 @@ class TaskView(FormView):
         else:
             print("you are not authorized to create a task")
             # fix this section
+
+
+class TaskDetailView(DetailView):
+    model = Task
+    # context_object_name = 'task'
+    template_name = 'bug/task_detail.html'

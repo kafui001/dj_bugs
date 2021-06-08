@@ -46,6 +46,7 @@ INSTALLED_APPS = [
      # project apps
     'bug',
     'users',
+    'ticket',
     # 3rd party apps
 ]
 
