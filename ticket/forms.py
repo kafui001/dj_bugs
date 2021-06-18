@@ -34,7 +34,7 @@ class TicketForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={
                 'class': 'form-control',                            
-                'placeholder':'title of your title',
+                'placeholder':'title of your ticket',
                 'id':"ticketForm1"
                 }
             ),

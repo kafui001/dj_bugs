@@ -74,6 +74,12 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            # register custom template_tags here
+            'libraries':{
+            'custom_ticketag': 'ticket.templatetag.custom_ticketag',
+
+            }
+
         },
     },
 ]
