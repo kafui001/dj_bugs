@@ -1,16 +1,16 @@
 from django.shortcuts import render
 from django.views.generic.list import MultipleObjectMixin
-from django.views.generic import CreateView, FormView, DetailView
+from django.views.generic import CreateView, FormView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from .models import Task
-from .forms import TaskForm
+from .forms import TaskForm, TaskEditForm
 
 # Create your views here.
-def home(request):
-    context = {
-    }
-    return render(request, 'bug/task.html',context)
+# def home(request):
+#     context = {
+#     }
+#     return render(request, 'bug/task.html',context)
 
 
 # class TaskView(MultipleObjectMixin,FormView):
@@ -51,3 +51,17 @@ class TaskDetailView(DetailView):
     model = Task
     # context_object_name = 'task'
     template_name = 'bug/task_detail.html'
+
+
+class TaskEditView(UpdateView):
+    model = Task
+    form_class = TaskEditForm
+    template_name = 'bug/task_edit.html'
+    success_url = reverse_lazy('bug:task')
+
+
+class TaskDeleteView(DeleteView):
+    model = Task
+    context_object_name = 'task'
+    template_name = 'bug/task_delete.html'
+    success_url = reverse_lazy('bug:task')

@@ -60,13 +60,14 @@ class TaskForm(forms.ModelForm):
         }
 
 
-class TicketForm(forms.ModelForm):
+class TaskEditForm(forms.ModelForm):
     class Meta:
-        model = Ticket
+        model = Task
         fields = [
             'title',
-            'description',
-            'priority',
+           'description',
+           'status',
+           'priority',
         ]
 
         widgets = {
@@ -86,7 +87,49 @@ class TicketForm(forms.ModelForm):
             'priority': forms.Select(choices=priority_choice_list, attrs={
                 'class': 'form-control',
                 'id':'formFileMultipleone',
-                'aria-label':"Default select Priority",
+                'aria-label':"",
                 }
-            )
+            ),
+            'status': forms.Select(choices=status_choice_list, attrs={
+                'class': 'form-control',
+                'id':'formFileMultiplestatus',
+                'aria-label':"",
+                }
+            ),
         }
+
+
+
+
+
+
+# class TicketForm(forms.ModelForm):
+#     class Meta:
+#         model = Ticket
+#         fields = [
+#             'title',
+#             'description',
+#             'priority',
+#         ]
+
+#         widgets = {
+#             'title': forms.TextInput(attrs={
+#                 'class': 'form-control',                            
+#                 'placeholder':'title of your task',
+#                 'id':"exampleFormControlInput77"
+#                 }
+#             ),
+#             'description': forms.Textarea(attrs={
+#                 'class': 'form-control',
+#                 'placeholder':'add any extra details here',
+#                 'id':"exampleFormControlTextarea78",
+#                 'rows':"5"
+#                 }
+#             ),
+#             'priority': forms.Select(choices=priority_choice_list, attrs={
+#                 'class': 'form-control',
+#                 'id':'formFileMultipleone',
+#                 'aria-label':"Default select Priority",
+#                 }
+#             )
+#         }

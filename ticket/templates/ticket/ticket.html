@@ -22,11 +22,12 @@
                         </div>
                     </div>
                 </div> <!-- Row end  -->
-            {% for item in tickets %}
+            
                 <div class="row clearfix g-3">
                     <div class="col-sm-12">
                         <div class="card mb-3">
                             <div class="card-body">
+                                
                                 <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
                                     <thead>
                                         <tr>
@@ -38,35 +39,46 @@
                                             <th>Actions</th>  
                                         </tr>
                                     </thead>
+                                    {% for item in tickets %}
                                     <tbody>
-                                        <tr>
+                                        <tr><a href="{% url 'ticket:ticket_detail' item.pk %}">
                                             <td>
-                                                <a href="ticket-detail.html" class="fw-bold text-secondary">#Tc-0002</a>
+                                                <a href="{% url 'ticket:ticket_detail' item.pk %}" class="fw-bold text-secondary">#Tc-0002</a>
                                             </td>
                                             <td>
-                                            {{item.title}}
-                                           </td>
-                                           <td>
-                                               <span class="fw-bold ms-1">{{item.creator}}</span>
-                                           </td>
-                                           <td>
-                                                12/03/2021
-                                           </td>
-                                           <td><span class="badge bg-warning">{{item.status}}</span></td>
+                                                <a href="{% url 'ticket:ticket_detail' item.pk %}">
+                                                    {{item.title}}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'ticket:ticket_detail' item.pk %}">
+                                                    <span class="fw-bold ms-1">{{item.creator}}</span>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'ticket:ticket_detail' item.pk %}">
+                                                    {{item.date_created}}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'ticket:ticket_detail' item.pk %}">
+                                                    {{item.status}}
+                                                </a>
+                                            </td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#edittickit"><i class="icofont-edit text-success"></i></button>
-                                                    <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
+                                                    <button type="button" class="btn btn-outline-secondary" ><a href="{% url 'ticket:ticket_edit' item.pk %}"><i class="icofont-edit text-success"></i></a></button>
+                                                    <button type="button" class="btn btn-outline-secondary deleterow"><a href="{% url 'ticket:ticket_delete' item.pk %}"><i class="icofont-ui-delete text-danger"></i></a></button>
                                                 </div>
                                             </td>
                                         </tr>
                                     </tbody>
+                                    {% endfor%}
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div><!-- Row End -->
-            {% endfor%}
             </div>
         </div>
         
@@ -86,16 +98,14 @@
                         </div>
                     </div>
                     <div class="members_list">
-                        <h6 class="fw-bold ">Employee </h6>
+                        <h6 class="fw-bold "> </h6>
                         <ul class="list-unstyled list-group list-group-custom list-group-flush mb-0">
                             <li class="list-group-item py-3 text-center text-md-start">
                                 <div class="d-flex align-items-center flex-column flex-sm-column flex-md-row">
                                     <div class="no-thumbnail mb-2 mb-md-0">
-                                        <img class="avatar lg rounded-circle" src="assets/images/xs/avatar2.jpg" alt="">
+                                        
                                     </div>
                                     <div class="flex-fill ms-3 text-truncate">
-                                        <h6 class="mb-0  fw-bold">Rachel Carr(you)</h6>
-                                        <span class="text-muted">rachel.carr@gmail.com</span>
                                     </div>
                                     <div class="members-action">
                                         <span class="members-role ">Admin</span>
@@ -111,94 +121,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="list-group-item py-3 text-center text-md-start">
-                                <div class="d-flex align-items-center flex-column flex-sm-column flex-md-row">
-                                    <div class="no-thumbnail mb-2 mb-md-0">
-                                        <img class="avatar lg rounded-circle" src="assets/images/xs/avatar3.jpg" alt="">
-                                    </div>
-                                    <div class="flex-fill ms-3 text-truncate">
-                                        <h6 class="mb-0  fw-bold">Lucas Baker<a href="#" class="link-secondary ms-2">(Resend invitation)</a></h6>
-                                        <span class="text-muted">lucas.baker@gmail.com</span>
-                                    </div>
-                                    <div class="members-action">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn bg-transparent dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Members
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                              <li>
-                                                  <a class="dropdown-item" href="#">
-                                                    <i class="icofont-check-circled"></i>
-                                                      
-                                                    <span>All operations permission</span>
-                                                   </a>
-                                                   
-                                                </li>
-                                                <li>
-                                                     <a class="dropdown-item" href="#">
-                                                        <i class="fs-6 p-2 me-1"></i>
-                                                           <span>Only Invite & manage team</span>
-                                                       </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn bg-transparent dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="icofont-ui-settings  fs-6"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                              <li><a class="dropdown-item" href="#"><i class="icofont-delete-alt fs-6 me-2"></i>Delete Member</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item py-3 text-center text-md-start">
-                                <div class="d-flex align-items-center flex-column flex-sm-column flex-md-row">
-                                    <div class="no-thumbnail mb-2 mb-md-0">
-                                        <img class="avatar lg rounded-circle" src="assets/images/xs/avatar8.jpg" alt="">
-                                    </div>
-                                    <div class="flex-fill ms-3 text-truncate">
-                                        <h6 class="mb-0  fw-bold">Una Coleman</h6>
-                                        <span class="text-muted">una.coleman@gmail.com</span>
-                                    </div>
-                                    <div class="members-action">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn bg-transparent dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Members
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                              <li>
-                                                  <a class="dropdown-item" href="#">
-                                                    <i class="icofont-check-circled"></i>
-                                                      
-                                                    <span>All operations permission</span>
-                                                   </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#">
-                                                        <i class="fs-6 p-2 me-1"></i>
-                                                           <span>Only Invite & manage team</span>
-                                                       </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="btn-group">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn bg-transparent dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="icofont-ui-settings  fs-6"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-end">
-                                                  <li><a class="dropdown-item" href="#"><i class="icofont-ui-password fs-6 me-2"></i>ResetPassword</a></li>
-                                                  <li><a class="dropdown-item" href="#"><i class="icofont-chart-line fs-6 me-2"></i>ActivityReport</a></li>
-                                                  <li><a class="dropdown-item" href="#"><i class="icofont-delete-alt fs-6 me-2"></i>Suspend member</a></li>
-                                                  <li><a class="dropdown-item" href="#"><i class="icofont-not-allowed fs-6 me-2"></i>Delete Member</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -207,42 +130,16 @@
         </div>
 
         <!-- Add Ticket-->
-        <div class="modal fade" id="tickadd" tabindex="-1"  aria-hidden="true">
+        <div class="modal fade" id="tickadd" tabindex="-1" aria-labelledby="addUserLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-md modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title  fw-bold" id="leaveaddLabel">Create Ticket</h5>
+                        <h5 class="modal-title  fw-bold" id="leaveaddLabel">Create a Ticket</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <!-- <div class="mb-3">
-                            <label for="sub" class="form-label">Subject</label>
-                            <input type="text" class="form-control" id="sub">
-                        </div> -->
                         <div class="deadline-form">
-                            <!-- <form method="POST" action="">
-                                <div class="row g-3 mb-3">
-                                <div class="col">
-                                    <label for="depone" class="form-label">Assign Name</label>
-                                    <input type="text" class="form-control" id="depone">
-                                </div>
-                                <div class="mb-3">
-                                    <label  class="form-label">Priority</label>
-                                    <select class="form-select">
-                                        <option selected>In Progress</option>
-                                        <option value="1">Completed</option>
-                                        <option value="2">Wating</option>
-                                        <option value="3">Decline</option>
-                                    </select>
-                                </div>
-                
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Done</button>
-                                    <button type="submit" class="btn btn-primary">create</button>
-                                </div>
-                            </form>     -->
-                            {% show_ticket_form %}
-                            <!-- <form method="POST" action=''>
+                            <form method="POST" action="{% url 'ticket:ticket_form' %}">
                                 {% csrf_token %}
                                 <div class="mb-3">
                             
@@ -250,58 +147,12 @@
                                     <div class="modal-footer">
                                         <input type="submit" class="btn btn-primary" value='Create'>
                                     </div>
-                            </form> -->
-
+                            </form>
                         </div>
                     </div>
                 </div>
             </div> 
-        </div>       
-
-         <!-- Edit Tickit-->
-         <div class="modal fade" id="edittickit" tabindex="-1"  aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-md modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title  fw-bold" id="edittickitLabel"> Tickit Edit</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="sub1" class="form-label">Subject</label>
-                        <input type="text" class="form-control" id="sub1" value="punching time not proper">
-                    </div>
-                    <div class="deadline-form">
-                        <form>
-                            <div class="row g-3 mb-3">
-                              <div class="col">
-                                <label for="depone11" class="form-label">Assign Name</label>
-                                <input type="text" class="form-control" id="depone11" value="Victor Rampling">
-                              </div>
-                              <div class="col">
-                                <label for="deptwo56" class="form-label">Creted Date</label>
-                                <input type="date" class="form-control" id="deptwo56" value="2021-02-25">
-                              </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="mb-3">
-                        <label  class="form-label">Status</label>
-                        <select class="form-select">
-                            <option selected>Completed</option>
-                            <option value="1">In Progress</option>
-                            <option value="2">Wating</option>
-                            <option value="3">Decline</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Done</button>
-                    <button type="submit" class="btn btn-primary">sent</button>
-                </div>
-            </div>
-            </div>
-        </div>
+        </div>  
     </div>
 </div>
  
@@ -313,26 +164,5 @@
 
 <!-- Jquery Page Js -->
 <script src="{% static 'js/template.js' %}"></script>
-<script>
-    // project data table
-    $(document).ready(function() {
-        $('#myProjectTable')
-        .addClass( 'nowrap' )
-        .dataTable( {
-            responsive: true,
-            columnDefs: [
-                { targets: [-1, -3], className: 'dt-body-right' }
-            ]
-        });
-        $('.deleterow').on('click',function(){
-        var tablename = $(this).closest('table').DataTable();  
-        tablename
-                .row( $(this)
-                .parents('tr') )
-                .remove()
-                .draw();
 
-        } );
-    });
-</script>
 {% endblock content %}

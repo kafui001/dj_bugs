@@ -71,55 +71,18 @@
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center justify-content-between mt-5">
                                                     <div class="lesson_name">
-                                                        <!-- <div class="project-block bg-lightblue">
-                                                            <i class="icofont-tasks"></i>
-                                                        </div> -->
                                                         <span class="small text-muted project_name fw-bold">Name of Project</span>
                                                         <h6 class="mb-0 fw-bold  fs-6  mb-2">{{task.title}}</h6>
                                                     </div>
                                                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                        <button type="button" class="btn btn-outline-secondary"
-                                                            data-bs-toggle="modal" data-bs-target="#editproject"><i
-                                                                class="icofont-edit text-success"></i></button>
-                                                        <button type="button" class="btn btn-outline-secondary"
-                                                            data-bs-toggle="modal" data-bs-target="#deleteproject"><i
-                                                                class="icofont-ui-delete text-danger"></i></button>
+                                                        <button type="button" class="btn btn-outline-secondary">
+                                                            <a href="{% url 'bug:task_edit' task.pk %}"><i class="icofont-edit text-success"></i></a>
+                                                        </button>
+                                                        <button type="button" class="btn btn-outline-secondary">
+                                                            <a href="{% url 'bug:task_delete' task.pk %}"><i class="icofont-ui-delete text-danger"></i></a>
+                                                        </button>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="d-flex align-items-center">
-                                                    <div class="avatar-list avatar-list-stacked pt-2">
-                                                        
-                                                        <span class="avatar rounded-circle text-center pointer sm"
-                                                            data-bs-toggle="modal" data-bs-target="#addUser"><i
-                                                                class="icofont-ui-add"></i></span>
-                                                                
-                                                    </div>
-                                                </div> -->
-                                                <!-- <div class="row g-2 pt-4">
-                                                    <div class="col-6">
-                                                       
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="col-6">
-                                                            <div class="d-flex align-items-center">
-                                                                <i class="icofont-sand-clock"></i>
-                                                                <span class="ms-2 text-success">{{ task.status }}</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="d-flex align-items-center">
-                                                            <i class="icofont-group-students "></i>
-                                                            <span class="ms-2">team of 6</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="d-flex align-items-center">
-                                                            <i class="icofont-ui-text-chat"></i>
-                                                            <span class="ms-2">5 comments</span>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
                                                 <div class="dividers-block"></div>
                                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                                     <h4 class="fw-bold mb-0"><a href="{% url 'bug:task_detail' task.id %}">Details</a></h4>
@@ -148,10 +111,12 @@
                                                     <h6 class="mb-0 fw-bold  fs-6  mb-2">Name of Project</h6>
                                                 </div>
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                                                        data-bs-target="#editproject"><i class="icofont-edit text-success"></i></button>
-                                                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                                                        data-bs-target="#deleteproject"><i class="icofont-ui-delete text-danger"></i></button>
+                                                    <button type="button" class="btn btn-outline-secondary">
+                                                        <a href="{% url 'bug:task_edit' item.pk %}"><i class="icofont-edit text-success"></i></a>
+                                                    </button>
+                                                    <button type="button" class="btn btn-outline-secondary">
+                                                        <a href="{% url 'bug:task_delete' item.pk %}"><i class="icofont-ui-delete text-danger"></i></a>
+                                                    </button>
                                                 </div>
                                             </div>
                                             <div class="d-flex align-items-center">
@@ -196,7 +161,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                {%endfor%}
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="tab-pane fade" id="inprogress-list">
@@ -215,10 +180,12 @@
                                                     <h6 class="mb-0 fw-bold  fs-6  mb-2">Name of Project</h6>
                                                 </div>
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                                                        data-bs-target="#editproject"><i class="icofont-edit text-success"></i></button>
-                                                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                                                        data-bs-target="#deleteproject"><i class="icofont-ui-delete text-danger"></i></button>
+                                                    <button type="button" class="btn btn-outline-secondary">
+                                                        <a href="{% url 'bug:task_edit' item.pk %}"><i class="icofont-edit text-success"></i></a>
+                                                    </button>
+                                                    <button type="button" class="btn btn-outline-secondary">
+                                                        <a href="{% url 'bug:task_delete' item.pk %}"><i class="icofont-ui-delete text-danger"></i></a>
+                                                    </button>
                                                 </div>
                                             </div>
                                             <div class="d-flex align-items-center">
@@ -263,7 +230,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                {%endfor%}
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="tab-pane fade" id="needsreview-list">
@@ -282,10 +249,12 @@
                                                     <h6 class="mb-0 fw-bold  fs-6  mb-2">Name of Project</h6>
                                                 </div>
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                                                        data-bs-target="#editproject"><i class="icofont-edit text-success"></i></button>
-                                                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                                                        data-bs-target="#deleteproject"><i class="icofont-ui-delete text-danger"></i></button>
+                                                    <button type="button" class="btn btn-outline-secondary">
+                                                        <a href="{% url 'bug:task_edit' item.pk %}"><i class="icofont-edit text-success"></i></a>
+                                                    </button>
+                                                    <button type="button" class="btn btn-outline-secondary">
+                                                        <a href="{% url 'bug:task_delete' item.pk %}"><i class="icofont-ui-delete text-danger"></i></a>
+                                                    </button>
                                                 </div>
                                             </div>
                                             <div class="d-flex align-items-center">
@@ -330,7 +299,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                {%endfor%}
+                                {% endfor %}
                             </div>
                         </div>
                         
@@ -350,10 +319,12 @@
                                                     <h6 class="mb-0 fw-bold  fs-6  mb-2">Name of Project</h6>
                                                 </div>
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                                                        data-bs-target="#editproject"><i class="icofont-edit text-success"></i></button>
-                                                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
-                                                        data-bs-target="#deleteproject"><i class="icofont-ui-delete text-danger"></i></button>
+                                                    <button type="button" class="btn btn-outline-secondary">
+                                                        <a href="{% url 'bug:task_edit' item.pk %}"><i class="icofont-edit text-success"></i></a>
+                                                    </button>
+                                                    <button type="button" class="btn btn-outline-secondary">
+                                                        <a href="{% url 'bug:task_delete' item.pk %}"><i class="icofont-ui-delete text-danger"></i></a>
+                                                    </button>
                                                 </div>
                                             </div>
                                             <div class="d-flex align-items-center">
