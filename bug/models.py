@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
-
+from django.db.models.signals import post_save
 
 
 # Create your models here.
@@ -17,9 +17,24 @@ class UserProfile(models.Model):
         return self.user.username
 
 
+
+def create_userprofile_signal(sender,instance,created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+
+post_save.connect(create_userprofile_signal, sender=UserProfile)
+
+
+class Administrator(models.Model):
+    user = models.OneToOneField(BugUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+
 class ProjectManager(models.Model):
     user  = models.OneToOneField(BugUser,on_delete=models.CASCADE)
-    admin = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
+    admin = models.ForeignKey(Administrator,on_delete=models.SET_NULL,null=True, related_name='pm_admin')
 
     def __str__(self):
         return self.user.username
@@ -28,7 +43,7 @@ class ProjectManager(models.Model):
 class Developer(models.Model):
     user              = models.OneToOneField(BugUser,on_delete=models.CASCADE)
     project_manager   = models.ForeignKey(ProjectManager, on_delete=models.SET_NULL, null=True,blank=True, related_name='project_manager')
-    admin             = models.ForeignKey(UserProfile,on_delete=models.SET_NULL,null=True, related_name='admin')
+    admin             = models.ForeignKey(Administrator,on_delete=models.SET_NULL,null=True, related_name='admin')
 
     def __str__(self):
         return self.user.username
@@ -67,7 +82,14 @@ class TaskStatus(models.Model):
 
 
 # class Project(models.Model):
-#     pass
+#     title        = models.CharField(max_length=255)
+#     description  = models.TextField()
+#     creator      = models.ForeignKey(BugUser,on_delete=models.SET_NULL, null=True,related_name='project_creator')
+#     status
+#     date_created
+#     begin_date
+#     end_date
+#     assigned_to  = pm
 
 
 class Ticket(models.Model):

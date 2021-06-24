@@ -52,7 +52,7 @@
                         <i class="icofont-briefcase"></i><span>Projects</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                     <!-- Menu: Sub menu ul -->
                     <ul class="sub-menu collapse" id="project-Components">
-                        <li><a class="ms-link" href="projects.html"><span>Projects</span></a></li>
+                        <li><a class="ms-link" href="{% url 'project:project_home' %}"><span>Projects</span></a></li>
                         <li><a class="ms-link" href="{% url 'bug:task' %}"><span>Tasks</span></a></li>
                         <!-- <li><a class="ms-link" href="team-leader.html"><span>Leaders</span></a></li> -->
                     </ul>
@@ -69,7 +69,7 @@
                         <!-- <li><a class="ms-link" href="employee-profile.html"> <span>Members Profile</span></a></li> -->
                     </ul>
                 </li>
-                <li> <a class="m-link" href="#"><i class="icofont-user-alt-5"></i> <span>Roles</span> </a>
+                <li> <a class="m-link" href="{% url 'roles_home' %}"><i class="icofont-user-alt-5"></i> <span>Roles</span> </a>
                 <li>
                     <!-- <a class="m-link"  href="#"><i class="icofont-users-alt-5"></i> <span>Signout</span></a> -->
                     <a class="m-link" href="#"><i class="icofont-logout fs-6"></i> <span>Signout</span></a>
@@ -95,18 +95,6 @@
                     <!-- header rightbar icon -->
                     <div class="h-right d-flex align-items-center mr-5 mr-lg-0 order-1">
                         <div class="d-flex">
-                            <!-- <a class="nav-link text-primary collapsed" href="help.html" title="Get Help">
-                                <i class="icofont-info-square fs-5"></i>
-                            </a> -->
-                            <!-- <div class="avatar-list avatar-list-stacked px-3">
-                                <img class="avatar rounded-circle" src="assets/images/xs/avatar2.jpg" alt="">
-                                <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="">
-                                <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="">
-                                <img class="avatar rounded-circle" src="assets/images/xs/avatar4.jpg" alt="">
-                                <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="">
-                                <img class="avatar rounded-circle" src="assets/images/xs/avatar8.jpg" alt="">
-                                <span class="avatar rounded-circle text-center pointer" data-bs-toggle="modal" data-bs-target="#addUser"><i class="icofont-ui-add"></i></span>
-                            </div> -->
                         </div>
                         <div class="dropdown notifications zindex-popover">
                             <a class="nav-link dropdown-toggle pulse" href="#" role="button" data-bs-toggle="dropdown">
@@ -249,6 +237,7 @@
 
 <!-- Plugin Js-->
 <script src="{% static 'assets/bundles/apexcharts.bundle.js' %}"></script>
+<script src="{% static 'assets/bundles/dataTables.bundle.js' %}"></script>
 
 <!-- Jquery Page Js -->
 <script src="{% static 'js/template.js' %}"></script>

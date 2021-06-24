@@ -6,8 +6,8 @@ from django.views import View
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 
-from .forms import UserSignUpForm, LoginForm
-
+from .forms import UserSignUpForm, LoginForm, AdminForm, DevForm, PmForm
+from bug.models import Administrator
 
 class UserSignUpView(View):
     
@@ -46,3 +46,23 @@ class UserLogin(FormView):
             return redirect(self.get_success_url())
         else:
             return self.form_invalid(form)
+
+
+# ROLES
+# def roles(request):
+#     context = {
+#     }
+#     return render(request, 'bug/roles.html',context)
+
+class RoleView(FormView):
+    model         = Administrator
+    form_class    = AdminForm
+    template_name = 'users/roles.html'
+    success_url = reverse_lazy('roles_home')
+
+    def get_context_data(self, **kwargs):
+        context = super(RoleView, self).get_context_data(**kwargs)
+        context['pm_form'] = PmForm
+        context['dev_form'] = DevForm
+        return context
+    

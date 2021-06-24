@@ -3,15 +3,10 @@ from django.views.generic.list import MultipleObjectMixin
 from django.views.generic import CreateView, FormView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
-from .models import Task
+from .models import Task, Developer
 from .forms import TaskForm, TaskEditForm
 
-# Create your views here.
-# def home(request):
-#     context = {
-#     }
-#     return render(request, 'bug/task.html',context)
-
+#Create your views here.
 
 # class TaskView(MultipleObjectMixin,FormView):
 class TaskView(FormView):
@@ -65,3 +60,22 @@ class TaskDeleteView(DeleteView):
     context_object_name = 'task'
     template_name = 'bug/task_delete.html'
     success_url = reverse_lazy('bug:task')
+
+
+# ROLES
+# def roles(request):
+#     context = {
+#     }
+#     return render(request, 'bug/roles.html',context)
+
+# class AssignView(FormView):
+#     model         = Developer
+#     form_class    = AssignDeveloperForm
+#     template_name = 'bug/roles.html'
+#     success_url = reverse_lazy('bug:task')
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(AssignView, self).get_context_data(**kwargs)
+    #     context['assign_developer'] = Task.objects.all()
+    #     return context
+    

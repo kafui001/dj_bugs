@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Task, TaskPriority, TaskStatus, BugUser
+from .models import Developer, ProjectManager, Task, TaskPriority, TaskStatus, BugUser
 # Register your models here.
 
 admin.site.register(BugUser)

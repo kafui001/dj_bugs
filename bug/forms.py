@@ -1,13 +1,13 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-# from .models import ProjectManager, Developer, Task
+from django.forms import fields
 from .models import Task, Ticket, ProjectManager, Developer, TaskPriority, TaskStatus
 
 
-# assign_task_developers = Developer.objects.all().values_list('name','name')
-# assign_developer_list = []
-# for item in assign_task_developers:
-#     assign_developer_list.append(item)
+# assign_developers = Developer.objects.all().values_list('name','name')
+# developer_list = []
+# for item in assign_developers:
+#     developer_list.append(item)
 
 
 priority_choices = TaskPriority.objects.all().values_list('name','name')
@@ -99,7 +99,19 @@ class TaskEditForm(forms.ModelForm):
         }
 
 
+# class AssignDeveloperForm(forms.ModelForm):
+#     class Meta:
+#         model  = Developer
+#         fields = ['user']
 
+#         widgets = {
+#             'user': forms.Select(choices=developer_list, attrs={
+#                 'class': 'form-control',
+#                 'id':'formFileMultiplestatus',
+#                 'aria-label':"Default select developer",
+#                 }
+#             ),
+#         }
 
 
 
