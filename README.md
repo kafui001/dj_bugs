@@ -1,1 +1,1 @@
-# dj_bugs
+# django bug tracker
